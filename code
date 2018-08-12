@@ -1,0 +1,13 @@
+#首先选中excel中的Hex表格，在excel的表格里面，下面的表格标签处，右键，选择“查看代码”，然后把下面的代码黏贴进去，然后点上面的运行
+
+Sub ColorCellsByHex()
+  Dim rSelection As Range, rCell As Range, tHex As String
+
+  If TypeName(Selection) = "Range" Then
+  Set rSelection = Selection
+    For Each rCell In rSelection
+      tHex = Mid(rCell.Text, 6, 2) & Mid(rCell.Text, 4, 2) & Mid(rCell.Text, 2, 2)
+      rCell.Interior.Color = WorksheetFunction.Hex2Dec(tHex)
+    Next
+  End If
+End Sub
